@@ -22,6 +22,8 @@ for row in foodFile:
     index += 1
 
 #User input
+for i in range(len(age_nutrition)):
+    print(str(i+1) + ". " + age_nutrition[i][0])
 kategori = int(input("Pilih kategori usia: "))
 budget = int(input("Jumlah budget: "))
 print("1. Kalori")
