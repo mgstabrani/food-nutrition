@@ -1,0 +1,11 @@
+Ayam segar,75,13.8,1.9,0.7
+Bayam,16,0.9,0.4,2.9
+Cabai merah,36,1,0.3,7.3
+Dodol bali,298,3.7,2.1,65.9
+Jagung kuning,355,9.2,3.9,73.7
+Ketan hitam,360,8,2.3,74.5
+Nasi putih,180,3,0.3,39.8
+Sagu aren,355,0.6,1.1,85.6
+Udang segar,91,21,0.2,0.1
+Ubi jalar manis,83,1.5,0.2,18.8
+Ikan patin segar,132,17,6.6,1.1
