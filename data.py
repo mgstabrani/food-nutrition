@@ -26,9 +26,10 @@ for i in range(len(age_nutrition)):
     print(str(i+1) + ". " + age_nutrition[i][0])
 kategori = int(input("Pilih kategori usia: "))
 budget = int(input("Jumlah budget: "))
-print("1. Kalori")
-print("2. Uang")
-prioritas = int(input("Pilih prioritas: "))
+# print("1. Kalori")
+# print("2. Uang")
+# prioritas = int(input("Pilih prioritas: "))
+prioritas = 2
 
 #User priority
 if(prioritas == 1):
