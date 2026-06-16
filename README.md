@@ -7,6 +7,8 @@
 - [Install](#Install)
 - [Run](#Run)
 - [Versioning](#Versioning)
+- [CI/CD](#ci-cd)
+- [Commit Format](#commit-format)
 - [Roadmap](#Roadmap)
 - [Author](#Author)
 - [Reference](#Reference)
@@ -44,6 +46,34 @@ This project follows Semantic Versioning with staged modernization:
 - `PATCH`: backward-compatible bug fixes.
 
 Current version is stored in `VERSION` and release notes are tracked in `CHANGELOG.md`.
+
+## CI/CD
+
+This repository now uses GitHub Actions:
+
+- CI workflow: runs Python syntax validation on pushes and pull requests.
+- Release workflow: runs semantic-release on `main` pushes.
+
+Release automation behavior:
+
+- Calculates next semantic version from conventional commit messages.
+- Updates `VERSION` automatically.
+- Generates and updates `CHANGELOG.md` automatically.
+- Creates GitHub Release with generated notes.
+
+Workflow files:
+
+- `.github/workflows/ci.yml`
+- `.github/workflows/release.yml`
+
+## Commit Format
+
+Use Conventional Commits so version bumping is automatic:
+
+- `fix: ...` -> PATCH release
+- `feat: ...` -> MINOR release
+- `feat!: ...` or `BREAKING CHANGE:` -> MAJOR release
+- `docs: ...`, `chore: ...`, `refactor: ...` -> no release by default unless marked as breaking
 
 ## Roadmap
 
