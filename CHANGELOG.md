@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mgstabrani/food-nutrition/compare/v1.0.0...v1.1.0) (2026-06-16)
+
+
+### Features
+
+* **cli:** add argparse-based non-interactive mode with interactive fallback ([549da59](https://github.com/mgstabrani/food-nutrition/commit/549da59940940ce50c4064d618ebe39df0674f92))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
