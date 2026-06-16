@@ -31,11 +31,25 @@ git clone https://github.com/mgstabrani/food-nutrition.git
 
 ## Run
 
-- Follow this instruction to run in your local command line.
+Interactive mode (prompts for input):
 
 ```
 python main.py
 ```
+
+Non-interactive mode (pass flags directly):
+
+```
+python main.py --category <1-19> --budget <amount>
+```
+
+Example:
+
+```
+python main.py --category 7 --budget 50000
+```
+
+Short flags `-c` and `-b` are also supported. Run `python main.py --help` to see all options.
 
 ## Versioning
 
@@ -77,9 +91,9 @@ Use Conventional Commits so version bumping is automatic:
 
 ## Roadmap
 
-- Step 1: Semantic versioning baseline (`0.1.0`).
-- Step 2: Core engine refactor (separate algorithm from input/output).
-- Step 3: CLI adapter on top of shared core.
+- Step 1: Semantic versioning baseline (`0.1.0`). ✓
+- Step 2: Core engine refactor (separate algorithm from input/output). ✓
+- Step 3: CLI adapter on top of shared core. ✓
 - Step 4: Python SDK adapter.
 - Step 5: REST API adapter with versioned endpoints.
 

@@ -1,12 +1,42 @@
+import argparse
+
 from branchbound import find_solution
 from data import choose_user_input, load_age_nutrition, load_food, prepare_food_with_ratio
+
+
+def build_arg_parser(age_nutrition):
+    parser = argparse.ArgumentParser(
+        prog="food-nutrition",
+        description="Optimize food selection by budget and daily calory need.",
+    )
+    parser.add_argument(
+        "--category", "-c",
+        type=int,
+        choices=range(1, len(age_nutrition) + 1),
+        metavar=f"1-{len(age_nutrition)}",
+        help="Age category number (see list below).",
+    )
+    parser.add_argument(
+        "--budget", "-b",
+        type=int,
+        help="Budget in Rupiah (positive integer).",
+    )
+    return parser
 
 
 def run():
     age_nutrition = load_age_nutrition()
     food = load_food()
 
-    kategori, budget, prioritas = choose_user_input(age_nutrition)
+    parser = build_arg_parser(age_nutrition)
+    args = parser.parse_args()
+
+    if args.category is not None and args.budget is not None:
+        if args.budget <= 0:
+            parser.error("--budget must be a positive integer.")
+        kategori, budget, prioritas = args.category, args.budget, 2
+    else:
+        kategori, budget, prioritas = choose_user_input(age_nutrition)
 
     if prioritas == 1:
         upper_bound = budget
