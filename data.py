@@ -1,50 +1,47 @@
 import csv
 
-#Read age-nutrition.csv
-ageFile = open("age-nutrition.csv","r")
-ageFile = csv.reader(ageFile)
-age_nutrition = []
-index = 0
-for row in ageFile:        
-    age_nutrition.append(row)
-    age_nutrition[index][1] = float(age_nutrition[index][1])
-    index += 1
+def load_age_nutrition(path="age-nutrition.csv"):
+    age_nutrition = []
+    with open(path, "r") as age_file:
+        age_reader = csv.reader(age_file)
+        for row in age_reader:
+            age_nutrition.append([row[0], float(row[1])])
+    return age_nutrition
 
-#Read food.csv
-foodFile = open("food.csv","r")
-foodFile = csv.reader(foodFile)
-food = []
-index = 0
-for row in foodFile:        
-    food.append(row)
-    for i in range(1,3):
-        food[index][i] = float(food[index][i])
-    index += 1
 
-#User input
-for i in range(len(age_nutrition)):
-    print(str(i+1) + ". " + age_nutrition[i][0])
-kategori = int(input("Pilih kategori usia: "))
-budget = int(input("Jumlah budget: "))
-# print("1. Kalori")
-# print("2. Uang")
-# prioritas = int(input("Pilih prioritas: "))
-prioritas = 2
+def load_food(path="food.csv"):
+    food = []
+    with open(path, "r") as food_file:
+        food_reader = csv.reader(food_file)
+        for row in food_reader:
+            food.append([row[0], float(row[1]), float(row[2])])
+    return food
 
-#User priority
-if(prioritas == 1):
-    upperBound = budget
-    profit = age_nutrition[kategori-1][1]
-    for i in range(len(food)):
-        food[i].append(food[i][1]/food[i][2])
 
-elif(prioritas == 2):
-    upperBound = age_nutrition[kategori-1][1]
-    profit = budget
-    for i in range(len(food)):
-        food[i].append(food[i][2]/food[i][1])
+def choose_user_input(age_nutrition):
+    for i in range(len(age_nutrition)):
+        print(str(i + 1) + ". " + age_nutrition[i][0])
 
-#Sort food based on pi/wi
-def take(elem):
-    return elem[3]
-food.sort(key=take)
+    kategori = 0
+    while kategori < 1 or kategori > len(age_nutrition):
+        kategori = int(input("Pilih kategori usia: "))
+
+    budget = 0
+    while budget <= 0:
+        budget = int(input("Jumlah budget: "))
+
+    prioritas = 2
+    return kategori, budget, prioritas
+
+
+def prepare_food_with_ratio(food, prioritas):
+    prepared_food = []
+    for item in food:
+        current = item[:]
+        if prioritas == 1:
+            current.append(current[1] / current[2])
+        else:
+            current.append(current[2] / current[1])
+        prepared_food.append(current)
+    prepared_food.sort(key=lambda elem: elem[3])
+    return prepared_food
