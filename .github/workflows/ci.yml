@@ -21,3 +21,9 @@ jobs:
 
       - name: Validate Python syntax
         run: python -m compileall .
+
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Run unit tests
+        run: python -m pytest tests/ -v
